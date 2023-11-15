@@ -8,3 +8,8 @@ Install the Node modules:
 
 Edit the serverless.yaml to set environment variables for Gremlin Team ID, and API endpoint if needed. 
 
+Deploy using the Serverless CLI:
+```
+  sls deploy
+```
+
