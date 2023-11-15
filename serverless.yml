@@ -11,13 +11,13 @@ functions:
     events:
       - httpApi: '*'
     layers:
-      - arn:aws:lambda:sa-east-1:044815399860:layer:gremlin-lambda-x86_64:13
+      - <gremlin-lambda-extension-arn>
     environment:
-      GREMLIN_TEAM_ID: 7d26e984-659b-5857-aabb-744f27915055
+      GREMLIN_TEAM_ID: <gremlin-team-id>
       GREMLIN_TEAM_CERTIFICATE_FILE: /var/task/cert.pem 
       GREMLIN_TEAM_PRIVATE_KEY_FILE: /var/task/key.pem
       GREMLIN_DEBUG: true
       GREMLIN_LAMBDA_ENABLED: true
       FAILURE_FLAGS_ENABLED: true
-      GREMLIN_API_ENDPOINT_URL: https://beta.gremlin.com/v1
+      GREMLIN_API_ENDPOINT_URL: <gremlin-api-endpoint>
       # GREMLIN_CONFIG_FILE: /var/task/config.yaml
