@@ -1,0 +1,22 @@
+service: ddarwin-aws-node-express-api
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+functions:
+  api:
+    handler: index.handler
+    events:
+      - httpApi: '*'
+    layers:
+      - <gremlin-lambda-extension-arn>
+    environment:
+      GREMLIN_TEAM_ID: <gremlin-team-id
+      GREMLIN_TEAM_CERTIFICATE_FILE: /var/task/cert.pem 
+      GREMLIN_TEAM_PRIVATE_KEY_FILE: /var/task/key.pem
+      GREMLIN_DEBUG: true
+      GREMLIN_LAMBDA_ENABLED: true
+      GREMLIN_API_ENDPOINT_URL: <gremlin-api-endpoint>
+      # GREMLIN_CONFIG_FILE: /var/task/config.yaml
