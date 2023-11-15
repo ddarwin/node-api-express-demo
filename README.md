@@ -6,7 +6,7 @@ Install the Node modules:
   npm install
 ```
 
-Edit the serverless.yaml to set environment variables for Gremlin Team ID, and API endpoint if needed. 
+Edit the serverless.yaml to set environment variables for Gremlin Layer ARN, Gremlin Team ID, and API endpoint if needed. 
 ```
   functions:
   api:
