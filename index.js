@@ -3,6 +3,8 @@ const express = require("express");
 const app = express();
 const gremlin = require(`@gremlin/failure-flags`);
 
+var responseBody = "";
+
 app.get("/", async (req, res, next) => {
 
   //calculate the end and response time for the request
