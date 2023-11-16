@@ -6,6 +6,8 @@ Install the Node modules:
   npm install
 ```
 
+Copy your Gremlin public certificate as cert.pem and private key file as key.pem to the root directory of your serverless project. 
+
 Edit the serverless.yaml to set environment variables for [Gremlin Lambda Extension ARN](https://www.gremlin.com/docs/failure-flags/lambda/#adding-the-gremlin-lambda-extension-to-your-lambda-function), Gremlin Team ID, and API endpoint if needed. 
 ```
   functions:
