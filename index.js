@@ -10,20 +10,7 @@ app.get("/", async (req, res, next) => {
   //calculate the end and response time for the request
   const startTime = new Date().getTime(); // Get the start time in milliseconds
 
-  responseBody = "Handling / request"
-
-  await gremlin.invokeFailureFlag({
-    name: 'ddarwin-leaky-behavior',
-    labels: {
-      method: req.method,
-      path: req.path,
-    },
-  
-    // Log the experiment after it's complete
-    behavior: async (experiment) => {
-      responseBody += ("<br/>I am consuming a lot of resources.");  
-    },
-  })
+  responseBody = "Handling / request";
 
   //calculate the end and response time for the request
   const endTime = new Date().getTime(); // Get the end time in milliseconds
@@ -67,11 +54,24 @@ app.get("/leak", async (req, res, next) => {
 
   responseBody = "Handling Leak request"
 
-  if (await gremlin.invokeFailureFlag({ name: 'ddarwin-handle-leak' })) {
-    responseBody += ("<br/>Executing Thread Leak Behavior</HTML>");
-  } else {
-    responseBody += ("<br/>No Leak Experiment Active");
-  }
+  // if (await gremlin.invokeFailureFlag({ name: 'ddarwin-handle-leak' })) {
+  //   responseBody += ("<br/>Executing Thread Leak Behavior</HTML>");
+  // } else {
+  //   responseBody += ("<br/>No Leak Experiment Active");
+  // }
+
+  await gremlin.invokeFailureFlag({
+    name: 'ddarwin-leaky-behavior',
+    labels: {
+      method: req.method,
+      path: req.path,
+    },
+  
+    // Log the experiment after it's complete
+    behavior: async (experiment) => {
+      responseBody += ("<br/>This app is leaking.");  
+    },
+  })
   
   //calculate the end and response time for the request
   const endTime = new Date().getTime(); // Get the end time in milliseconds
