@@ -2,7 +2,7 @@ const serverless = require("serverless-http");
 const express = require("express");
 const app = express();
 const gremlin = require(`@gremlin/failure-flags`);
-const port = 3000;
+const port = 3000
 
 var responseBody = "";
 
@@ -32,7 +32,7 @@ app.get("/path", async (req, res, next) => {
 
   try {
     await gremlin.invokeFailureFlag({
-      name: 'ddarwin-http-ingress',                 // the name of your failure flag
+      name: 'http-ingress-path',                 // the name of your failure flag
       labels: {}}) 
   }
   catch(err) {
@@ -62,7 +62,7 @@ app.get("/leak", async (req, res, next) => {
   // }
 
   await gremlin.invokeFailureFlag({
-    name: 'ddarwin-leaky-behavior',
+    name: 'http-ingress-leak',
     labels: {
       method: req.method,
       path: req.path,
@@ -91,7 +91,7 @@ app.use((req, res, next) => {
 });
 
 app.listen(port, () => {
-  console.log(`Node express server listening on port ${port}`)
-})
+    console.log(`Node express server listening on port ${port}`)
+  })
 
 module.exports.handler = serverless(app);

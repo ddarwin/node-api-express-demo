@@ -24,6 +24,13 @@
             "env": {
                 "FAILURE_FLAGS_ENABLED": "true"
             }
+        },
+        {
+            "name": "Docker Node.js Launch",
+            "type": "docker",
+            "request": "launch",
+            "preLaunchTask": "docker-run: debug",
+            "platform": "node"
         }
     ]
 }
