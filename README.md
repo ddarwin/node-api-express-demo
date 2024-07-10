@@ -1,4 +1,4 @@
-# ddarwin-node-api-express-demo
+# node-api-express-demo
 Nodejs api demonstrating the Gremlin Failure Flags solution. 
 
 This repository has instructions for installing to Lambda using the Serverless framework and for building a containerized image for deployment in ECS. 
