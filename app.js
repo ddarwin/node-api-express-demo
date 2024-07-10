@@ -1,3 +1,4 @@
+const serverless = require("serverless-http");
 const express = require("express");
 const app = express();
 const gremlin = require(`@gremlin/failure-flags`);
@@ -15,8 +16,7 @@ app.get("/", async (req, res, next) => {
   //calculate the end and response time for the request
   const endTime = new Date().getTime(); // Get the end time in milliseconds
   const responseTime = endTime - startTime; // Calculate the response time in milliseconds
-
-
+  
   responseBody += "<br/>Response took "+responseTime+" (ms)<br><br>This API supports /path and /leak requests"
 
   res.send("<HTML>"+responseBody+"</HTML>");
@@ -32,7 +32,6 @@ app.get("/path", async (req, res, next) => {
   try {
     await gremlin.invokeFailureFlag({
       name: 'http-ingress-path',                 // the name of your failure flag
-      debug: 'true',
       labels: {}}) 
   }
   catch(err) {
@@ -63,7 +62,6 @@ app.get("/leak", async (req, res, next) => {
 
   await gremlin.invokeFailureFlag({
     name: 'http-ingress-leak',
-    debug: 'true',
     labels: {
       method: req.method,
       path: req.path,
