@@ -1,17 +1,18 @@
-service: ddarwin-aws-node-express-api
+service: capone-node-express-api
 frameworkVersion: '3'
 
 provider:
   name: aws
   runtime: nodejs18.x
+  region: us-west-1
 
 functions:
   api:
-    handler: index.handler
+    handler: app.handler
     events:
       - httpApi: '*'
     layers:
-      - arn:aws:lambda:us-east-1:044815399860:layer:gremlin-lambda-x86_64:13
+      - arn:aws:lambda:us-west-1:044815399860:layer:gremlin-lambda-arm64:13
     environment:
       GREMLIN_TEAM_ID: 7d26e984-659b-5857-aabb-744f27915055
       GREMLIN_TEAM_CERTIFICATE_FILE: /var/task/cert.pem 
