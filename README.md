@@ -1,5 +1,22 @@
-# ddarwin-node-api-express-demo
- Node express api using Serverless Framework
+# node-api-express-demo
+Nodejs api demonstrating the Gremlin Failure Flags solution. 
+
+This repository has instructions for installing to Lambda using the Serverless framework and for building a containerized image for deployment in ECS. 
+
+
+## To create a Docker container for running in Docker or other containerized platform
+
+A container has been published in Docker Hub, docker.io/dondarwin/nodeexpressapi-debug:latest
+
+To build a new Docker container:
+- Build the docker image by running ```docker build . -t yourrepositoryname/your_app_name```.
+
+- Publish the new created container to a your container registry (e.g. Docker Hub, AWS Elastic Container Registry) using ```docker push```.
+
+- Reference the new container image from the ECS Task definition. 
+
+
+## To install to Lambda using Serverless Framework
 
 Install the Node modules:
 ```
