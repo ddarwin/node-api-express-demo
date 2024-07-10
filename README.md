@@ -49,5 +49,3 @@ Deploy using the Serverless CLI:
   sls deploy
 ```
 
-## To create a Docker container for running in Docker or other containerized platform
-
