@@ -12,6 +12,7 @@ To build a new Docker container:
 - Build the docker image by running ```docker build . -t yourrepositoryname/your_app_name```.
 
 - Publish the new created container to a your container registry (e.g. Docker Hub, AWS Elastic Container Registry) using ```docker push```.
+-- Note: the container exposes an HTTP listener on port 3000
 
 - Reference the new container image from the ECS Task definition. 
 
